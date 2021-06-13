@@ -64,10 +64,6 @@ def signin_done():
     flash("이미 가입된 아이디 입니다.")
     return redirect(url_for("signin"))
 
-@app.route("/user/<uid>")
-def user(uid):
-  pass
-
 @app.route("/write")
 def write():
   if "uid" in session:
@@ -82,6 +78,16 @@ def write_done():
   uid = session.get("uid")
   DB.write_post(title, contents, uid)
   return redirect(url_for("index"))
+
+@app.route("/delete")
+def delete():
+  post_list = DB.post_list(session["uid"])
+  return render_template('delete.html', post_list=post_list)
+
+@app.route("/delete_page/<string:pid>")
+def delete_post(pid):
+  DB.post_delete(pid)
+  return redirect(url_for("post_list"))
 
 if __name__ == "__main__":
   app.run(debug=True)

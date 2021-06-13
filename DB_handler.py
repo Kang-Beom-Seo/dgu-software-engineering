@@ -31,8 +31,11 @@ class DBModule:
         "email" : email
       }
     }
-    self.signin_verification(_id_)
-    self.db.userInfo.save(information)
+    if not self.signin_verification(_id_):
+      return False
+    else:
+      self.db.userInfo.save(information)
+      return True
 
   def write_post(self, title, contents, uid):
     pid = str(uuid.uuid4())[:10]
@@ -51,5 +54,5 @@ class DBModule:
     post = self.db.post.find({"uid" : uid, "pid" : pid})
     return post
 
-  def get_user(self, uid):
-    pass
+  def post_delete(self, pid):
+    self.db.post.remove({"pid" : pid})

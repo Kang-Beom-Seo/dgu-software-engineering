@@ -5,10 +5,10 @@
 
 {%  block contents %}
 
-<a href="{{url_for('delete')}}"><input type="button" value="삭제"></a>
+<p>삭제하길 원하는 게시물을 누르세요.</p>
 
 {% for post in post_list %}
-<a href="{{url_for('post', pid=post["pid"])}}">
+<a href="{{url_for('delete_post', pid=post["pid"])}}">
   <div>
     {{post["pid"]}}
     {{post["title"]}}

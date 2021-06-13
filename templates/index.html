@@ -1,6 +1,6 @@
 {% extends "base.html"%}
 
-{% block user%}
+{% block user %}
 
 {% if user=="Login" %}
 <a href = "{{url_for('login')}}">Login</a>
@@ -10,8 +10,8 @@
 <a href = "{{url_for('write')}}">글 작성하기</a>
 <a href = "{{url_for('post_list')}}">글 목록 보기</a>
 {% endif %}      
-{% endblock user%}
+{% endblock user %}
 
-{% block contents%}
+{% block contents %}
 
 {% endblock contents %}
