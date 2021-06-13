@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block user %}
+{% endblock user %}
+
+{%  block contents %}
+
+{% for post_ in post %}
+  <p>제목: {{post_["title"]}}</p>
+  <p>본문: {{post_["contents"]}}</p>
+{% endfor %}
+
+{% endblock contents %}
